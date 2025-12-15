@@ -385,10 +385,6 @@ BrainfuckInstruction * brainfuck_parse_substring_incremental(char *str, int *ptr
  * @param The character that's converted into an instruction.
  */
 BrainfuckInstruction * brainfuck_parse_character(char c) {
-	BrainfuckInstruction *instruction = (BrainfuckInstruction *) malloc(sizeof(BrainfuckInstruction));
-	instruction->next = 0;
-	instruction->loop = 0;
-	instruction->difference = 1;
 	switch(c) {
 	case BRAINFUCK_TOKEN_PLUS:
 	case BRAINFUCK_TOKEN_MINUS:
@@ -403,6 +399,10 @@ BrainfuckInstruction * brainfuck_parse_character(char c) {
 	default:
 		return NULL;
 	}
+ BrainfuckInstruction *instruction = (BrainfuckInstruction *) malloc(sizeof(BrainfuckInstruction));
+ instruction->next = 0;
+ instruction->loop = 0;
+ instruction->difference = 1;
 	instruction->type = c;
 	return instruction;
 }
